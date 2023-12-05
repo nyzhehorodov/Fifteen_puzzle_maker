@@ -1,0 +1,30 @@
+namespace: Fifteen_puzzle_maker
+
+fifteen-puzzle-game:
+  defines: runnable
+  metadata:
+    name: fifteen-puzzle-game
+    description: >-
+      A static web page with embedded JavaScript for the Fifteen Sliding Puzzle
+      game.
+    icon: https://emojiapi.dev/api/v1/robot.svg
+  containers:
+    fifteen-puzzle-game:
+      image: env-2139.registry.local/fifteen-puzzle-game:main-7e1b158
+      build: .
+      dockerfile: Dockerfile.fifteen-puzzle-game
+  services:
+    http:
+      description: HTTP traffic for the Fifteen Puzzle Game
+      container: fifteen-puzzle-game
+      port: 80
+      host-port: 80
+      publish: true
+      protocol: tcp
+  connections: {}
+  variables: {}
+
+stack:
+  defines: group
+  members:
+    - Fifteen_puzzle_maker/fifteen-puzzle-game

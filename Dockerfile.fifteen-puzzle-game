@@ -1,0 +1,8 @@
+FROM nginx:alpine
+LABEL maintainer="Your Name <your.email@example.com>"
+COPY index.html /usr/share/nginx/html
+COPY fifteen_puzzle.js /usr/share/nginx/html
+COPY art.jpg /usr/share/nginx/html
+COPY icon.jpg /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
