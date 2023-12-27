@@ -1,0 +1,30 @@
+namespace: Fifteen_puzzle_maker
+
+fifteen-sliding-puzzle:
+  defines: runnable
+  metadata:
+    name: fifteen-sliding-puzzle
+    description: >-
+      A static web-based Fifteen Sliding Puzzle game that can be integrated into
+      any web page or web app.
+    icon: https://emojiapi.dev/api/v1/robot.svg
+  containers:
+    fifteen-sliding-puzzle:
+      image: env-4350.registry.local/fifteen-sliding-puzzle:main-7e1b158
+      build: .
+      dockerfile: Dockerfile.fifteen-sliding-puzzle
+  services:
+    http:
+      description: Standard HTTP port for web traffic
+      container: fifteen-sliding-puzzle
+      port: 80
+      host-port: 80
+      publish: true
+      protocol: tcp
+  connections: {}
+  variables: {}
+
+stack:
+  defines: group
+  members:
+    - Fifteen_puzzle_maker/fifteen-sliding-puzzle
